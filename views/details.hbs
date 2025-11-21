@@ -1,0 +1,68 @@
+<div class="detail-container">
+  <a href="/" class="back-link">Back to Listings</a>
+
+  <div class="detail-card">
+    <img src="{{listing.thumbnail}}" alt="{{listing.NAME}}" 
+         onerror="this.src='https://via.placeholder.com/600x400/0066ff/ffffff?text=No+Image'">
+
+    <div class="detail-content">
+      <h1>{{listing.NAME}}</h1>
+      <p class="location"><i class="fa-solid fa-location-dot"></i> {{listing.neighbourhood}}, Toronto</p>
+      <p class="type"><i class="fa-solid fa-home"></i> {{listing.room_type}} • Hosted by {{listing.host_name}}</p>
+
+      <div class="amenities">
+        <span><i class="fa-solid fa-bed"></i> 2 beds</span>
+        <span><i class="fa-solid fa-bath"></i> 1 bath</span>
+        <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+        <span><i class="fa-solid fa-kitchen"></i> Kitchen</span>
+      </div>
+
+      <div class="price-large">${{listing.price}} <span>/ night</span></div>
+
+      <button class="btn-update-modal" onclick="openUpdateModal('{{listing._id}}', '{{listing.NAME}}', {{listing.price}})">
+        Update Title & Price
+      </button>
+
+      <form action="/listing/{{listing._id}}/delete" method="POST" style="display:inline; margin-left:1rem;">
+        <button type="submit" class="btn-delete" onclick="return confirm('Delete forever?')">
+          Delete Listing
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- UPDATE MODAL -->
+<div id="updateModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeUpdateModal()">×</span>
+    <h2>Update Listing</h2>
+    <form id="updateForm" action="" method="POST">
+      <div class="input-group">
+        <label>New Title</label>
+        <input type="text" name="NAME" id="modalName" required>
+      </div>
+      <div class="input-group">
+        <label>New Price ($)</label>
+        <input type="number" name="price" id="modalPrice" required min="1">
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-save">Save Changes</button>
+        <button type="button" class="btn-cancel" onclick="closeUpdateModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function openUpdateModal(id, name, price) {
+  document.getElementById('updateForm').action = `/listing/${id}/update`;
+  document.getElementById('modalName').value = name.replace(/'/g, "\\'");
+  document.getElementById('modalPrice').value = price;
+  document.getElementById('updateModal').style.display = 'block';
+}
+function closeUpdateModal() {
+  document.getElementById('updateModal').style.display = 'none';
+}
+window.onclick = e => { if (e.target === document.getElementById('updateModal')) closeUpdateModal(); }
+</script>

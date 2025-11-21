@@ -1,0 +1,26 @@
+<div class="page-header">
+    <h1>All Listings 
+        <span class="counter">{{listings.length}} found</span>
+        {{#if search}}<span class="search-tag">for "{{search}}"</span>{{/if}}
+    </h1>
+</div>
+
+<div class="grid">
+    {{#each listings}}
+    <div class="card">
+        <img src="{{this.thumbnail}}" alt="{{this.NAME}}" 
+             onerror="this.src='https://via.placeholder.com/400x300/0066ff/ffffff?text=Airbnb'">
+        <div class="card-body">
+            <h3>{{this.NAME}}</h3>
+            <p class="location">{{this.neighbourhood}} • {{this.room_type}}</p>
+            <p class="host">Hosted by {{this.host_name}}</p>
+            <div class="price">${{this.price}}<span>/night</span></div>
+            <a href="/listing/{{this._id}}" class="btn-view">View Details</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+{{#unless listings.length}}
+<div class="empty>No listings found for "{{search}}". <a href="/">Show all</a></div>
+{{/unless}}

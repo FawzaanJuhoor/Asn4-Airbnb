@@ -1,0 +1,50 @@
+<div class="form-container">
+  <div class="form-card">
+    <h2>Add New Airbnb Listing</h2>
+    <form action="/create" method="POST">
+      
+      <div class="input-group">
+        <label>Listing Title <span style="color:red;">*</span></label>
+        <input type="text" name="NAME" required placeholder="e.g. Luxury Penthouse in Yorkville">
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <label>Price per Night ($) <span style="color:red;">*</span></label>
+          <input type="number" name="price" required min="10">
+        </div>
+        <div class="input-group">
+          <label>Room Type</label>
+          <select name="room_type">
+            <option>Entire home/apt</option>
+            <option>Private room</option>
+            <option>Shared room</option>
+            <option>Hotel room</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <label>Neighbourhood <span style="color:red;">*</span></label>
+          <input type="text" name="neighbourhood" required placeholder="e.g. Yorkville, Downtown Toronto">
+        </div>
+        <div class="input-group">
+          <label>Host Name</label>
+          <input type="text" name="host_name">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Image URL (Optional)</label>
+        <input type="url" name="thumbnail" placeholder="https://example.com/my-photo.jpg">
+        <small>Leave blank for default image</small>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-save">Add Listing</button>
+        <a href="/" class="btn-cancel">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

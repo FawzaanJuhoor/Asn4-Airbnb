@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb • Fawzaan Juhoor N01707140</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <i class="fa-solid fa-house"></i>
+                <span class="logo-text">Airbnb</span>
+            </a>
+            <form action="/" method="GET" class="search-form">
+                <input type="text" name="search" placeholder="Search listings, neighbourhood, host..." value="{{search}}">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <a href="/create" class="add-btn">+ Add Listing</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        {{{body}}}
+    </main>
+
+    <footer>
+        <p>ITE5315 Assignment 4 – Fawzaan Juhoor – N01707140 | © 2025</p>
+    </footer>
+</body>
+</html>
